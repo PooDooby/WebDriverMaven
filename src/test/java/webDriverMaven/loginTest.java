@@ -1,5 +1,7 @@
 package webDriverMaven;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,13 +23,18 @@ public class loginTest {
 
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
+		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 	}
 	@Test
 	public void doLogin() {
-
-		driver.get(
-				"https://accounts.google.com/signin/v2/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&service=mail&sacu=1&rip=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
+		
+		driver.get("http://google.com/");
+		
+		
+		
+		driver.findElement(By.xpath("/html/body/div[1]/div[1]/div/div/div/div[2]/a")).click();;
 
 		driver.findElement(By.id("identifierId")).sendKeys("skshitizgupta@gmail.com");
 		driver.findElement(By.xpath("//div[@class='VfPpkd-RLmnJb']")).click();
